@@ -28,7 +28,7 @@ alias vim nvim
 
 # git
 alias g git
-alias ga "git add"
+alias ga "git add ."
 alias gb "git branch"
 alias gba "git branch -a"
 alias gbd "git branch -D"
@@ -53,3 +53,6 @@ alias undopush "git push -f origin HEAD^:master"
 alias d "sudo docker"
 alias ds "sudo docker start"
 alias dcs "sudo docker container stop"
+
+# bat
+alias bat batcat
