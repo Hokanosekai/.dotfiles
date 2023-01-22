@@ -4,13 +4,18 @@ if (not status) then
 end
 
 tree.setup({
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+  },
   sort_by = "case_sensitive",
   view = {
     width = 23,
     adaptive_size = true,
     mappings = {
       list = {
-        
+
       },
     },
     signcolumn = 'yes',
@@ -29,10 +34,31 @@ tree.setup({
         none = ' ',
       },
     },
+    icons = {
+      webdev_colors = true,
+      git_placement = 'before',
+      glyph = {
+        default = '',
+        symlink = '',
+        git = {
+          unstaged = 'M',
+          staged = 'S',
+          unmerged = 'U',
+          renamed = 'R',
+          untracked = '?',
+          deleted = 'D',
+          ignored = 'I',
+        },
+        folder = {
+          default = '',
+          open = '',
+          symlink = '',
+          symlink_open = '',
+        },
+      },
+    }
   },
   filters = {
     dotfiles = true,
   },
-  open_on_setup = true,
 })
-

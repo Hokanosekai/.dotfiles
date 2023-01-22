@@ -93,13 +93,6 @@ local function tools_plugins(use)
     require('hoka.plugins.zen-mode')
   end
   })
-  use({ "L3MON4D3/LuaSnip",
-    after = "nvim-cmp",
-    config = function()
-      require('hoka.plugins.luasnip')
-    end
-  })
-  use({ "saadparwaiz1/cmp_luasnip" })
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -135,9 +128,23 @@ local function lsp_plugins(use)
     require('hoka.plugins.null-ls')
   end
   })
-  use({ "hrsh7th/nvim-cmp", config = function()
-    require("hoka.plugins.cmp")
-  end
+
+  use "rafamadriz/friendly-snippets"
+  --[[ use({ "L3MON4D3/LuaSnip",
+    config = function()
+      require('hoka.plugins.luasnip')
+    end
+  }) ]] --
+
+  use({ "hrsh7th/nvim-cmp",
+    requires = {
+      'saadparwaiz1/cmp_luasnip',
+      "L3MON4D3/LuaSnip",
+    },
+    config = function()
+      require("hoka.plugins.cmp")
+      require('hoka.plugins.luasnip')
+    end
   })
 end
 

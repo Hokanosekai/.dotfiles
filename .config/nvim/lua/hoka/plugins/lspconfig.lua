@@ -67,6 +67,12 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+nvim_lsp.jdtls.setup {
+  cmd = { "jdtls" },
+  filetypes = { "java" },
+  root_dir = nvim_lsp.util.root_pattern(".git", "pom.xml", "build.gradle", "build.sh"),
+}
+
 nvim_lsp.flow.setup {
   on_attach = on_attach,
   capabilities = capabilities
@@ -112,6 +118,13 @@ nvim_lsp.tailwindcss.setup {
 }
 
 nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.cssmodules_ls.setup {
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  root_pattern = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
   on_attach = on_attach,
   capabilities = capabilities
 }

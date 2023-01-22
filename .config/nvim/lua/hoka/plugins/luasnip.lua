@@ -1,6 +1,8 @@
 local status, ls = pcall(require, 'luasnip')
 if (not status) then return end
 
+require('luasnip.loaders.from_vscode').lazy_load()
+
 local snip = ls.snippet
 local func = ls.function_node
 
@@ -9,6 +11,9 @@ local defunc = function() return { 'def fname(args):' } end
 
 local copyright_lua = require('hoka.snippets.copyright-lua')
 local copyright = require('hoka.snippets.copyright')
+
+-- JAVA
+local sout = require('hoka.snippets.java.sout')
 
 ls.add_snippets(nil, {
   all = {
@@ -31,6 +36,9 @@ ls.add_snippets(nil, {
     }),
     snip(copyright_lua.snippet, {
       func(copyright_lua.func, {}),
+    }),
+    snip(sout.snippet, {
+      func(sout.func, {}),
     }),
   },
 })
